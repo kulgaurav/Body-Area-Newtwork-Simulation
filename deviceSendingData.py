@@ -7,7 +7,7 @@ import random
 from datetime import datetime
 import time
 
-client = boto3.client('iot')
+aws_db = boto3.client('dynamodb', region_name='eu-west-1')
 
 with open('../../endpoint.json') as json_file:  
     data = json.load(json_file)
@@ -99,13 +99,17 @@ def startDataSimulation():
             print("===========================>>>>>>>>Low Power, some sensors are down!!<<<<<<<<===============================")
             fullPower = False
         if(CURRENT_POWER <= SLEEP_POWER_THRESHOLD):
-            # SEND DATA TO SERVER/S3
             
             while(goingToChargeCountDown < 5):
                 time.sleep(1) # wait until resumed
                 goingToChargeCountDown += 1
                 print("=========================>>>>>Power critical, all sensors stopped.<<<<<<<<<<================================")
             if(goingToChargeCountDown == 5):
+                #response = table.put_item(Item={'Time': datetime.strftime("%H:%M:%S"),'Data': PUBLISH_MEMORY})
+                aws_db.put_item(Item={"Time":{"S":datetime.now().strftime("%H:%M:%S")},"Data":{"S":json.dumps(PUBLISH_MEMORY)}}, TableName="IoT_Data")
+                PUBLISH_MEMORY = []
+                
+                print("=========================>>>>>DATA BACKED UP TO CLOUD.<<<<<<<<<<================================")
                 CURRENT_POWER = 100
                 fullPower = True
                 print("===================>>>>>Device charged!! Runnning with full capacity.<<<<<<<<=============================")
