@@ -40,4 +40,16 @@
 * Once the power is critical, data is backed up to dynamoDB.
 
 
+# NODE-RED Implementation:
+
+## Requirements:
+
+Node-Red
+AWS
+
+## Dependencies
+
+AWSIoT device setup
+MQTT
+
 
