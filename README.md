@@ -96,7 +96,7 @@
 * Download MaxHopandBackupSink.json file from the git and import this file in your node red.
 * Implementation is straight forward three sensor made using inject nodes are trying to send data using sensor4 implemented using function block where the counter is increasing for maxhop.
 * In switch node value of maxhop is copared with default value and accordingly action is taken.
-* For reset the value of maxhop counter press the inject node Reset:Reset Counter inject node on top.
+* For reset the value of maxhop counter press the inject node Reset:Reset Counter inject node on top of the flow.
 
 #### Problem addressed 3
 * We have implemeted a concept of standby sink that is in case if battery of the primary sink is down it will send it data to standby sink which is mytopic4 on AWS test instance and craeted using the same steps as for mytopic3.
@@ -105,7 +105,7 @@
 * Open node red on your system
 * Download MaxHopandBackupSink.json file from the git and import this file in your node red.
 * Taking input from my topic three battery value is simulated in function block and if battery value is less then certain limit it is passing on its data to mytopic4(stanby sink) and condition is checked inside switch block.
-
+* For reset the value of battery value press the inject node Reset:Reset Battery inject node on top of the flow.
 
 
 
