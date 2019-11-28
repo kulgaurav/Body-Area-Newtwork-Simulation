@@ -1,0 +1,1 @@
+[{"id":"2755d26c.a26b3e","type":"inject","z":"7be8cede.da491","name":"","topic":"Reset","payload":"Reset Battery","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":150,"y":100,"wires":[["7d527fd6.900f1"]]}]
